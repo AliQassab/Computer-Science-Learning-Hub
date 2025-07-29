@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Computer Science Learning Hub" />
+    <title>Computer Science Learning Hub</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>🖥️ Computer Science Learning Hub</h1>
+        <p>Interactive tutorials for fundamental CS concepts</p>
+      </div>
+
+      <div class="navigation">
+        <button class="nav-btn active" onclick="showSection('numbers', event)">
+          Number Systems
+        </button>
+        <button class="nav-btn" onclick="showSection('cpu', event)">
+          CPU & Memory
+        </button>
+        <button class="nav-btn" onclick="showSection('os', event)">
+          Operating Systems
+        </button>
+        <button class="nav-btn" onclick="showSection('cli', event)">
+          Command Line
+        </button>
+        <button class="nav-btn" onclick="showSection('nodejs', event)">
+          Node.js CLI
+        </button>
+        <button class="nav-btn" onclick="showSection('python', event)">
+          Python CLI
+        </button>
+      </div>
+
+      <div class="content">
+        <!-- Number Systems Section -->
+        <div id="numbers" class="section active">
+          <h2>🔢 Number Systems</h2>
+          <p>
+            Understanding how computers represent numbers is fundamental. This
+            section explores Decimal (Base 10), Binary (Base 2), and Hexadecimal
+            (Base 16) systems.
+          </p>
+
+          <div class="interactive-box">
+            <h3>Interactive Number Converter</h3>
+            <p>
+              Enter a value in any of the fields below to see its equivalent in
+              other number systems.
+            </p>
+            <div class="converter">
+              <div class="input-group">
+                <label for="decimal">Decimal (Base 10)</label>
+                <input
+                  type="text"
+                  id="decimal"
+                  placeholder="Enter decimal number"
+                />
+              </div>
+              <div class="input-group">
+                <label for="binary">Binary (Base 2)</label>
+                <input
+                  type="text"
+                  id="binary"
+                  placeholder="Enter binary number"
+                />
+              </div>
+              <div class="input-group">
+                <label for="hex">Hexadecimal (Base 16)</label>
+                <input type="text" id="hex" placeholder="Enter hex number" />
+              </div>
+            </div>
+            <div id="conversion-result" class="explanation">
+              Enter any number in any base to see conversions!
+            </div>
+          </div>
+
+          <h3>Why Different Number Systems?</h3>
+          <p>
+            <strong>Binary (Base 2):</strong> Computers fundamentally operate
+            using binary because digital circuits can represent two distinct
+            states: ON (1) and OFF (0). This simplicity makes it ideal for
+            electronic implementation.
+          </p>
+          <p>
+            <strong>Hexadecimal (Base 16):</strong> Hexadecimal is a compact
+            shorthand for binary. Each hex digit (0-9, A-F) precisely represents
+            4 binary digits (bits). This makes long binary strings much easier
+            for humans to read and write, especially in contexts like memory
+            addresses or color codes.
+          </p>
+
+          <div class="interactive-box">
+            <h3>Binary Operations (Bitwise)</h3>
+            <p>
+              Explore how bitwise AND, OR, and XOR operations work on binary
+              numbers. These are crucial for low-level programming and data
+              manipulation.
+            </p>
+            <div class="grid-2">
+              <div class="input-group">
+                <label for="bit-a">First Binary Number</label>
+                <input type="text" id="bit-a" value="1010" />
+              </div>
+              <div class="input-group">
+                <label for="bit-b">Second Binary Number</label>
+                <input type="text" id="bit-b" value="1100" />
+              </div>
+            </div>
+            <div id="bitwise-result" class="explanation">
+              Results will appear here...
+            </div>
+          </div>
+
+          <div class="interactive-box">
+            <h3>Practice Challenge</h3>
+            <p>
+              Test your understanding! Convert the decimal number
+              <span id="challenge-num" class="highlight">42</span> to binary and
+              hexadecimal.
+            </p>
+            <button class="btn" onclick="newChallenge()">New Challenge</button>
+            <button class="btn" onclick="showAnswer()">Show Answer</button>
+            <div
+              id="challenge-answer"
+              class="explanation"
+              style="display: none"
+            ></div>
+          </div>
+        </div>
+
+        <!-- CPU & Memory Section -->
+        <div id="cpu" class="section">
+          <h2>🖥️ CPU & Memory Architecture</h2>
+          <p>
+            The CPU and memory are the core components of any computer system,
+            working in tandem to execute programs and process data.
+          </p>
+
+          <h3>What is a CPU?</h3>
+          <p>
+            The <strong>Central Processing Unit (CPU)</strong> is often called
+            the "brain" of the computer. It's responsible for executing
+            instructions that make up computer programs, performing
+            calculations, and managing data flow. This is done through a
+            continuous <strong>fetch-decode-execute cycle</strong>.
+          </p>
+
+          <div class="interactive-box">
+            <h3>CPU Components</h3>
+            <p>
+              Click on each component to understand its role within the CPU.
+            </p>
+            <div class="cpu-grid">
+              <div class="cpu-component" onclick="explainComponent('alu')">
+                <h4>🧮 ALU</h4>
+                <p>Arithmetic Logic Unit</p>
+                <small>Performs math & logic operations</small>
+              </div>
+              <div class="cpu-component" onclick="explainComponent('cu')">
+                <h4>🎛️ Control Unit</h4>
+                <p>Instruction coordinator</p>
+                <small>Manages CPU operations & flow</small>
+              </div>
+              <div
+                class="cpu-component"
+                onclick="explainComponent('registers')"
+              >
+                <h4>📦 Registers</h4>
+                <p>Ultra-fast temporary storage</p>
+                <small>Holds current data & instructions</small>
+              </div>
+              <div class="cpu-component" onclick="explainComponent('cache')">
+                <h4>⚡ Cache</h4>
+                <p>High-speed temporary memory</p>
+                <small>Stores frequently used data for quick access</small>
+              </div>
+            </div>
+            <div id="component-info" class="explanation">
+              Click on any CPU component above to learn more about it!
+            </div>
+          </div>
+
+          <h3>Memory Hierarchy</h3>
+          <p>
+            Computer memory is organized in a hierarchy based on speed, cost,
+            and capacity. Faster memory is more expensive and has less capacity.
+          </p>
+          <div class="memory-level level-1">
+            CPU Registers (Fastest, Smallest, Most Expensive)
+          </div>
+          <div class="memory-level level-2">L1/L2/L3 Cache</div>
+          <div class="memory-level level-3">Main Memory (RAM)</div>
+          <div class="memory-level level-4">Solid State Drive (SSD)</div>
+          <div class="memory-level level-5">
+            Hard Disk Drive (Slowest, Largest, Cheapest)
+          </div>
+
+          <div class="interactive-box">
+            <h3>CPU Instruction Simulator</h3>
+            <p>
+              Watch a simple program execute step-by-step through the CPU's
+              fetch-decode-execute cycle.
+            </p>
+            <div class="code-block">
+              <pre>
+LOAD R1, #42   ; Load value 42 into register R1
+ADD R1, #8     ; Add 8 to the value in R1 (R1 now holds 50)
+STORE R1, MEM  ; Store result (50) from R1 back to memory
+              </pre>
+            </div>
+            <button class="btn" onclick="simulateInstruction()">
+              Step Through Instructions
+            </button>
+            <div
+              id="instruction-info"
+              class="explanation"
+              style="display: none"
+            ></div>
+            <div
+              class="progress-bar"
+              style="display: none"
+              id="progress-container"
+            >
+              <div class="progress-fill" id="progress-bar"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Operating Systems Section -->
+        <div id="os" class="section">
+          <h2>🖱️ Operating Systems</h2>
+          <p>
+            An Operating System (OS) is software that manages computer hardware
+            and software resources and provides common services for computer
+            programs.
+          </p>
+
+          <h3>What is an Operating System?</h3>
+          <p>
+            An <strong>Operating System (OS)</strong> acts as an intermediary
+            between the user and the computer hardware. Its primary goals are to
+            make the computer system convenient to use and to manage hardware
+            resources efficiently.
+          </p>
+
+          <div class="interactive-box">
+            <h3>The Kernel</h3>
+            <p>
+              The <strong>kernel</strong> is the core component of the operating
+              system. It has complete control over everything in the system. It
+              manages:
+            </p>
+            <ul style="margin: 1rem 0; padding-left: 2rem">
+              <li>
+                <strong>Process Management:</strong> Creating, scheduling, and
+                terminating processes.
+              </li>
+              <li>
+                <strong>Memory Management:</strong> Allocating and deallocating
+                memory space to processes.
+              </li>
+              <li>
+                <strong>File System:</strong> Organizing and managing files and
+                directories.
+              </li>
+              <li>
+                <strong>Device Drivers:</strong> Interacting with hardware
+                devices.
+              </li>
+              <li>
+                <strong>Security:</strong> Protecting system resources and user
+                data.
+              </li>
+            </ul>
+          </div>
+
+          <h3>Processes</h3>
+          <p>
+            A <strong>process</strong> is an instance of a computer program that
+            is being executed. It's a fundamental concept in operating systems,
+            each with its own memory space, resources, and execution context.
+          </p>
+
+          <div class="interactive-box">
+            <h3>Process Tree Example</h3>
+            <p>
+              Processes often form a hierarchical tree structure, where a parent
+              process can create child processes.
+            </p>
+            <div class="code-block">
+              <pre>
+init (PID: 1)
+├── systemd (PID: 2)
+│   ├── NetworkManager (PID: 845)
+│   ├── chrome (PID: 3421)
+│   │   ├── renderer (PID: 3422)
+│   │   └── gpu-process (PID: 3424)
+│   └── your-app (PID: 4567)
+              </pre>
+            </div>
+            <p>
+              <strong>PID</strong> = Process ID (a unique identifier assigned to
+              each running process)
+            </p>
+          </div>
+
+          <h3>System Calls</h3>
+          <p>
+            <strong>System calls</strong> provide an interface between a process
+            and the operating system. They are the only way a user program can
+            access the kernel's privileged functions.
+          </p>
+
+          <div class="interactive-box">
+            <p>
+              Explore common categories of system calls and their functions.
+            </p>
+            <div class="grid-2">
+              <div>
+                <h4>File Operations</h4>
+                <div class="code-block">
+                  <pre>
+open()   - Open a file or device
+read()   - Read data from a file descriptor
+write()  - Write data to a file descriptor
+close()  - Close a file descriptor
+                  </pre>
+                </div>
+              </div>
+              <div>
+                <h4>Process Operations</h4>
+                <div class="code-block">
+                  <pre>
+fork()   - Create a new process (child)
+exec()   - Replace current process with a new program
+wait()   - Wait for a child process to terminate
+exit()   - Terminate the current process
+                  </pre>
+                </div>
+              </div>
+            </div>
+            <button class="btn" onclick="showSyscall()">
+              Demo Random System Call
+            </button>
+            <div
+              id="syscall-info"
+              class="explanation"
+              style="display: none"
+            ></div>
+          </div>
+        </div>
+
+        <!-- Command Line Section -->
+        <div id="cli" class="section">
+          <h2>💻 Command Line Tools</h2>
+          <p>
+            The Command Line Interface (CLI) is a powerful text-based interface
+            for interacting with your computer. It's essential for developers
+            and system administrators.
+          </p>
+
+          <h3>Essential Commands</h3>
+          <p>
+            Learn some of the most fundamental commands and how they can be
+            chained together using pipes (`|`).
+          </p>
+
+          <div class="interactive-box">
+            <h3>Basic Pipeline Example</h3>
+            <p>
+              A pipeline allows you to combine multiple commands, where the
+              output of one command becomes the input of the next.
+            </p>
+            <div class="code-block">
+              <pre>
+cat file.txt | head -10 | tail -5
+              </pre>
+            </div>
+            <p>
+              This pipeline:
+              <br />
+              <code>cat file.txt</code> reads the entire content of `file.txt`.
+              <br />
+              <code>| head -10</code> takes the output of `cat` and passes only
+              the first 10 lines.
+              <br />
+              <code>| tail -5</code> takes those 10 lines and outputs only the
+              last 5 of them.
+            </p>
+          </div>
+
+          <div class="interactive-box">
+            <h3>Common Text Processing Tools</h3>
+            <p>
+              <code>grep</code> and <code>sed</code> are incredibly versatile
+              tools for searching and editing text from the command line.
+            </p>
+            <div class="grid-2">
+              <div>
+                <h4>grep - Search Text</h4>
+                <div class="code-block">
+                  <pre>
+grep "error" logfile.txt    # Finds lines containing "error"
+grep -i "ERROR" logfile.txt # Case-insensitive search
+grep -n "pattern" file.txt  # Shows line numbers
+                  </pre>
+                </div>
+              </div>
+              <div>
+                <h4>sed - Stream Editor</h4>
+                <div class="code-block">
+                  <pre>
+sed 's/old/new/' file.txt   # Replaces first "old" with "new" on each line
+sed 's/old/new/g' file.txt  # Replaces ALL "old" with "new" on each line
+sed '/pattern/d' file.txt   # Deletes lines containing "pattern"
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="interactive-box">
+            <h3>Advanced Pipeline: Word Count</h3>
+            <p>
+              This complex pipeline demonstrates how to find the 10 most common
+              words in a text file.
+            </p>
+            <div class="code-block">
+              <pre>
+cat book.txt | tr ' ' '\n' | sort | uniq -c | sort -nr | head -10
+              </pre>
+            </div>
+            <button class="btn" onclick="explainPipeline()">
+              Break Down Pipeline
+            </button>
+            <div
+              id="pipeline-info"
+              class="explanation"
+              style="display: none"
+            ></div>
+          </div>
+        </div>
+
+        <!-- Node.js CLI Section -->
+        <div id="nodejs" class="section">
+          <h2>🟢 Node.js CLI Tools</h2>
+          <p>
+            Node.js is a popular runtime for building fast and scalable network
+            applications, and it's also excellent for creating command-line
+            interface (CLI) tools.
+          </p>
+
+          <h3>Why Node.js for CLI?</h3>
+          <ul style="margin: 1rem 0; padding-left: 2rem">
+            <li>
+              <strong>JavaScript Everywhere:</strong> Use your existing
+              JavaScript knowledge for both frontend and backend/CLI.
+            </li>
+            <li>
+              <strong>Huge npm Ecosystem:</strong> Access to millions of
+              packages on npm for various functionalities.
+            </li>
+            <li>
+              <strong>Cross-Platform:</strong> Node.js CLIs run seamlessly on
+              Windows, macOS, and Linux.
+            </li>
+            <li>
+              <strong>Great for File Operations:</strong> Node.js's built-in
+              <code>fs</code> module makes file system interactions
+              straightforward.
+            </li>
+            <li>
+              <strong>Async/Await Support:</strong> Handle asynchronous tasks
+              (like network requests or file I/O) elegantly.
+            </li>
+          </ul>
+
+          <div class="interactive-box">
+            <h3>Basic CLI Structure (File Line Counter)</h3>
+            <p>
+              This example shows a simple Node.js script that counts the number
+              of lines in a specified file.
+            </p>
+            <div class="code-block">
+              <pre>
+#!/usr/bin/env node
+
+const fs = require('fs'); // Import the file system module
+
+// Get command-line arguments, excluding 'node' and the script name
+const args = process.argv.slice(2);
+
+// Check if a filename was provided
+if (args.length === 0) {
+  console.log('Usage: node script.js &lt;filename&gt;');
+  process.exit(1); // Exit with an error code
+}
+
+const filename = args[0]; // The first argument is the filename
+
+try {
+  // Read the file synchronously (for simplicity in this example)
+  const content = fs.readFileSync(filename, 'utf8');
+  // Split content by newline and count the resulting array length
+  console.log(`Lines: ${content.split('\n').length}`);
+} catch (error) {
+  console.error(`Error reading file: ${error.message}`);
+  process.exit(1);
+}
+              </pre>
+            </div>
+            <p>
+              To run this: Save as `line-counter.js`, then `node line-counter.js
+              your_file.txt`
+            </p>
+          </div>
+
+          <div class="interactive-box">
+            <h3>Using npm Packages (Commander & Chalk)</h3>
+            <p>
+              For more robust CLIs, you'll often use npm packages.
+              <code>commander</code> helps parse arguments and commands, while
+              <code>chalk</code> adds styling to your console output.
+            </p>
+            <div class="code-block">
+              <pre>
+// First, install packages: npm install commander chalk
+
+const { Command } = require('commander'); // CLI framework
+const chalk = require('chalk');           // For colorful console output
+
+const program = new Command(); // Create a new command instance
+
+// Define basic CLI information
+program
+  .name('my-cli')
+  .version('1.0.0')
+  .description('My awesome CLI tool built with Node.js');
+
+// Define a 'hello' command
+program
+  .command('hello')
+  .argument('&lt;name&gt;', 'your name to greet') // Define a required argument
+  .action((name) => { // Action to perform when 'hello' command is run
+    console.log(chalk.blue(`Hello ${name}! Welcome to the Node.js CLI!`));
+  });
+
+// Parse the command-line arguments
+program.parse(process.argv);
+              </pre>
+            </div>
+            <p>
+              To run this: Save as `my-cli.js`, then `node my-cli.js hello John`
+            </p>
+          </div>
+        </div>
+
+        <!-- Python CLI Section -->
+        <div id="python" class="section">
+          <h2>🐍 Python CLI Tools</h2>
+          <p>
+            Python is a popular choice for writing command-line tools due to its
+            simplicity, extensive standard library, and powerful third-party
+            packages.
+          </p>
+
+          <h3>Why Python for CLI?</h3>
+          <ul style="margin: 1rem 0; padding-left: 2rem">
+            <li>
+              <strong>Rich Standard Library:</strong> Python comes with many
+              built-in modules for common tasks (file I/O, networking, etc.).
+            </li>
+            <li>
+              <strong>Great PyPI Ecosystem:</strong> Access to thousands of
+              libraries via pip for almost any need.
+            </li>
+            <li>
+              <strong>Excellent for Data Processing:</strong> Ideal for scripts
+              that involve data manipulation, parsing, and analysis.
+            </li>
+            <li>
+              <strong>Readable Code:</strong> Python's clear syntax makes CLI
+              scripts easy to write and maintain.
+            </li>
+            <li>
+              <strong>Strong Text Processing:</strong> Regular expressions and
+              string manipulation are powerful in Python.
+            </li>
+          </ul>
+
+          <div class="interactive-box">
+            <h3>Basic CLI with argparse (File Analyzer)</h3>
+            <p>
+              <code>argparse</code> is Python's standard library module for
+              parsing command-line arguments. This example creates a simple file
+              analyzer.
+            </p>
+            <div class="code-block">
+              <pre>
+#!/usr/bin/env python3
+
+import argparse # Module for parsing command-line arguments
+import sys      # Provides access to system-specific parameters and functions
+
+def main():
+    # Create the parser
+    parser = argparse.ArgumentParser(
+        description='A simple file analyzer CLI tool.'
+    )
+
+    # Add positional argument: filename
+    parser.add_argument(
+        'filename',
+        help='The path to the file you want to analyze.'
+    )
+
+    # Add optional argument: --lines or -l
+    parser.add_argument(
+        '--lines', '-l',
+        action='store_true', # Stores True if the argument is present
+        help='Count and display the number of lines in the file.'
+    )
+
+    # Parse the arguments from sys.argv
+    args = parser.parse_args()
+
+    try:
+        with open(args.filename, 'r') as f:
+            lines = f.readlines() # Read all lines into a list
+            if args.lines:
+                print(f"File: {args.filename}")
+                print(f"Total Lines: {len(lines)}")
+    except FileNotFoundError:
+        print(f"Error: The file '{args.filename}' was not found.")
+        sys.exit(1) # Exit with an error code
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+        sys.exit(1)
+
+if __name__ == '__main__':
+    main() # Call the main function when the script is executed
+              </pre>
+            </div>
+            <p>
+              To run this: Save as `file_analyzer.py`, then `python3
+              file_analyzer.py my_document.txt --lines`
+            </p>
+          </div>
+
+          <div class="interactive-box">
+            <h3>Advanced CLI with Click (and Rich for styling)</h3>
+            <p>
+              <code>Click</code> is a popular third-party package for creating
+              beautiful and composable command-line interfaces. We'll also use
+              <code>rich</code> for enhanced console output.
+            </p>
+            <div class="code-block">
+              <pre>
+# First, install packages: pip install click rich
+
+import click
+from rich.console import Console # For rich, colorful console output
+
+console = Console() # Initialize Rich console
+
+@click.group() # Decorator to create a group of commands
+def cli():
+    """My awesome CLI tool built with Python Click."""
+    pass # This function acts as the entry point for the CLI group
+
+@cli.command() # Decorator to define a command within the 'cli' group
+@click.argument('name') # Define a required positional argument
+def hello(name):
+    """Say hello to someone with a personalized message."""
+    console.print(f"Hello [bold blue]{name}[/bold blue]! Glad you're here.", style="bold green")
+
+@cli.command() # Another command within the 'cli' group
+@click.option(
+    '--count',
+    default=1,
+    help='Number of greetings to repeat.',
+    type=click.INT # Ensure count is an integer
+)
+def repeat(count):
+    """Repeat a greeting multiple times."""
+    if count &lt;= 0:
+        console.print("[red]Error:[/red] Count must be a positive number.", style="bold")
+        return
+
+    for i in range(count):
+        console.print(f"Hello {i+1}!", style="italic yellow")
+
+if __name__ == '__main__':
+    cli() # Call the main CLI group when the script is executed
+              </pre>
+            </div>
+            <p>
+              To run this: Save as `my_cli.py`, then `python3 my_cli.py hello
+              Alice` or `python3 my_cli.py repeat --count 3`
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <p>&copy; 2023 Computer Science Learning Hub. All rights reserved.</p>
+        <p>Created with ❤️ for learning and exploration.</p>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
